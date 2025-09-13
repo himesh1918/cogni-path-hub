@@ -4,15 +4,17 @@ import { Card } from "@/components/ui/card";
 import LearningHero from "@/components/LearningHero";
 import LearningDashboard from "@/components/LearningDashboard";
 import DocumentProcessor from "@/components/DocumentProcessor";
-import { Home, BookOpen, Upload, BarChart3, Settings, User } from "lucide-react";
+import CodeLearningPlatform from "@/components/CodeLearningPlatform";
+import { Home, BookOpen, Upload, BarChart3, Settings, User, Code } from "lucide-react";
 
 const Index = () => {
-  const [currentView, setCurrentView] = useState<"hero" | "dashboard" | "processor" | "analytics">("hero");
+  const [currentView, setCurrentView] = useState<"hero" | "dashboard" | "processor" | "analytics" | "code">("hero");
 
   const navigation = [
     { id: "hero", label: "Home", icon: Home },
     { id: "dashboard", label: "Dashboard", icon: BarChart3 },
     { id: "processor", label: "Documents", icon: Upload },
+    { id: "code", label: "Code Lab", icon: Code },
     { id: "analytics", label: "Analytics", icon: BookOpen },
   ];
 
@@ -24,6 +26,8 @@ const Index = () => {
         return <LearningDashboard />;
       case "processor":
         return <DocumentProcessor />;
+      case "code":
+        return <CodeLearningPlatform />;
       case "analytics":
         return (
           <div className="min-h-screen bg-background p-6 flex items-center justify-center">
@@ -101,8 +105,11 @@ const Index = () => {
                 <Button size="sm" onClick={() => setCurrentView("dashboard")} className="bg-white text-primary hover:bg-white/90">
                   Dashboard
                 </Button>
+                <Button size="sm" variant="outline" onClick={() => setCurrentView("code")} className="border-white/20 text-white hover:bg-white/10">
+                  Code Lab
+                </Button>
                 <Button size="sm" variant="outline" onClick={() => setCurrentView("processor")} className="border-white/20 text-white hover:bg-white/10">
-                  Document Processor
+                  Documents
                 </Button>
               </div>
             </div>
